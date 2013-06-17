@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9A099DF4176F7E3700BF91A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A099DF3176F7E3700BF91A3 /* Foundation.framework */; };
+		9A099DF6176F7E3700BF91A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A099DF5176F7E3700BF91A3 /* CoreGraphics.framework */; };
+		9A099DF8176F7E3700BF91A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A099DF7176F7E3700BF91A3 /* UIKit.framework */; };
+		9A099DFA176F7E3700BF91A3 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A099DF9176F7E3700BF91A3 /* SpriteKit.framework */; };
+		9A099E00176F7E3700BF91A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A099DFE176F7E3700BF91A3 /* InfoPlist.strings */; };
+		9A099E02176F7E3700BF91A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A099E01176F7E3700BF91A3 /* main.m */; };
+		9A099E06176F7E3700BF91A3 /* STWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A099E05176F7E3700BF91A3 /* STWAppDelegate.m */; };
+		9A099E09176F7E3700BF91A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A099E07176F7E3700BF91A3 /* Main.storyboard */; };
+		9A099E0C176F7E3700BF91A3 /* STWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A099E0B176F7E3700BF91A3 /* STWViewController.m */; };
+		9A099E0F176F7E3700BF91A3 /* STWMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A099E0E176F7E3700BF91A3 /* STWMyScene.m */; };
+		9A099E11176F7E3700BF91A3 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A099E10176F7E3700BF91A3 /* Spaceship.png */; };
+		9A099E13176F7E3800BF91A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A099E12176F7E3800BF91A3 /* Images.xcassets */; };
+		9A099E1A176F7E3800BF91A3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A099E19176F7E3800BF91A3 /* XCTest.framework */; };
+		9A099E1B176F7E3800BF91A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A099DF3176F7E3700BF91A3 /* Foundation.framework */; };
+		9A099E1C176F7E3800BF91A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A099DF7176F7E3700BF91A3 /* UIKit.framework */; };
+		9A099E24176F7E3800BF91A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A099E22176F7E3800BF91A3 /* InfoPlist.strings */; };
+		9A099E26176F7E3800BF91A3 /* Stee_s_First_GameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A099E25176F7E3800BF91A3 /* Stee_s_First_GameTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9A099E1D176F7E3800BF91A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A099DE8176F7E3700BF91A3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A099DEF176F7E3700BF91A3;
+			remoteInfo = "Stee's First Game";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9A099DF0176F7E3700BF91A3 /* Stee's First Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stee's First Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A099DF3176F7E3700BF91A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9A099DF5176F7E3700BF91A3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9A099DF7176F7E3700BF91A3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9A099DF9176F7E3700BF91A3 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		9A099DFD176F7E3700BF91A3 /* Stee's First Game-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Stee's First Game-Info.plist"; sourceTree = "<group>"; };
+		9A099DFF176F7E3700BF91A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9A099E01176F7E3700BF91A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9A099E03176F7E3700BF91A3 /* Stee's First Game-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stee's First Game-Prefix.pch"; sourceTree = "<group>"; };
+		9A099E04176F7E3700BF91A3 /* STWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STWAppDelegate.h; sourceTree = "<group>"; };
+		9A099E05176F7E3700BF91A3 /* STWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STWAppDelegate.m; sourceTree = "<group>"; };
+		9A099E08176F7E3700BF91A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9A099E0A176F7E3700BF91A3 /* STWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STWViewController.h; sourceTree = "<group>"; };
+		9A099E0B176F7E3700BF91A3 /* STWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STWViewController.m; sourceTree = "<group>"; };
+		9A099E0D176F7E3700BF91A3 /* STWMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STWMyScene.h; sourceTree = "<group>"; };
+		9A099E0E176F7E3700BF91A3 /* STWMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STWMyScene.m; sourceTree = "<group>"; };
+		9A099E10176F7E3700BF91A3 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		9A099E12176F7E3800BF91A3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9A099E18176F7E3800BF91A3 /* Stee's First GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stee's First GameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A099E19176F7E3800BF91A3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		9A099E21176F7E3800BF91A3 /* Stee's First GameTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Stee's First GameTests-Info.plist"; sourceTree = "<group>"; };
+		9A099E23176F7E3800BF91A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9A099E25176F7E3800BF91A3 /* Stee_s_First_GameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Stee_s_First_GameTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9A099DED176F7E3700BF91A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A099DF6176F7E3700BF91A3 /* CoreGraphics.framework in Frameworks */,
+				9A099DF8176F7E3700BF91A3 /* UIKit.framework in Frameworks */,
+				9A099DFA176F7E3700BF91A3 /* SpriteKit.framework in Frameworks */,
+				9A099DF4176F7E3700BF91A3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A099E15176F7E3800BF91A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A099E1A176F7E3800BF91A3 /* XCTest.framework in Frameworks */,
+				9A099E1C176F7E3800BF91A3 /* UIKit.framework in Frameworks */,
+				9A099E1B176F7E3800BF91A3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9A099DE7176F7E3700BF91A3 = {
+			isa = PBXGroup;
+			children = (
+				9A099DFB176F7E3700BF91A3 /* Stee's First Game */,
+				9A099E1F176F7E3800BF91A3 /* Stee's First GameTests */,
+				9A099DF2176F7E3700BF91A3 /* Frameworks */,
+				9A099DF1176F7E3700BF91A3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9A099DF1176F7E3700BF91A3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A099DF0176F7E3700BF91A3 /* Stee's First Game.app */,
+				9A099E18176F7E3800BF91A3 /* Stee's First GameTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A099DF2176F7E3700BF91A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9A099DF3176F7E3700BF91A3 /* Foundation.framework */,
+				9A099DF5176F7E3700BF91A3 /* CoreGraphics.framework */,
+				9A099DF7176F7E3700BF91A3 /* UIKit.framework */,
+				9A099DF9176F7E3700BF91A3 /* SpriteKit.framework */,
+				9A099E19176F7E3800BF91A3 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A099DFB176F7E3700BF91A3 /* Stee's First Game */ = {
+			isa = PBXGroup;
+			children = (
+				9A099E04176F7E3700BF91A3 /* STWAppDelegate.h */,
+				9A099E05176F7E3700BF91A3 /* STWAppDelegate.m */,
+				9A099E07176F7E3700BF91A3 /* Main.storyboard */,
+				9A099E0A176F7E3700BF91A3 /* STWViewController.h */,
+				9A099E0B176F7E3700BF91A3 /* STWViewController.m */,
+				9A099E0D176F7E3700BF91A3 /* STWMyScene.h */,
+				9A099E0E176F7E3700BF91A3 /* STWMyScene.m */,
+				9A099E10176F7E3700BF91A3 /* Spaceship.png */,
+				9A099E12176F7E3800BF91A3 /* Images.xcassets */,
+				9A099DFC176F7E3700BF91A3 /* Supporting Files */,
+			);
+			path = "Stee's First Game";
+			sourceTree = "<group>";
+		};
+		9A099DFC176F7E3700BF91A3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9A099DFD176F7E3700BF91A3 /* Stee's First Game-Info.plist */,
+				9A099DFE176F7E3700BF91A3 /* InfoPlist.strings */,
+				9A099E01176F7E3700BF91A3 /* main.m */,
+				9A099E03176F7E3700BF91A3 /* Stee's First Game-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9A099E1F176F7E3800BF91A3 /* Stee's First GameTests */ = {
+			isa = PBXGroup;
+			children = (
+				9A099E25176F7E3800BF91A3 /* Stee_s_First_GameTests.m */,
+				9A099E20176F7E3800BF91A3 /* Supporting Files */,
+			);
+			path = "Stee's First GameTests";
+			sourceTree = "<group>";
+		};
+		9A099E20176F7E3800BF91A3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9A099E21176F7E3800BF91A3 /* Stee's First GameTests-Info.plist */,
+				9A099E22176F7E3800BF91A3 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9A099DEF176F7E3700BF91A3 /* Stee's First Game */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A099E29176F7E3800BF91A3 /* Build configuration list for PBXNativeTarget "Stee's First Game" */;
+			buildPhases = (
+				9A099DEC176F7E3700BF91A3 /* Sources */,
+				9A099DED176F7E3700BF91A3 /* Frameworks */,
+				9A099DEE176F7E3700BF91A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Stee's First Game";
+			productName = "Stee's First Game";
+			productReference = 9A099DF0176F7E3700BF91A3 /* Stee's First Game.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9A099E17176F7E3800BF91A3 /* Stee's First GameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A099E2C176F7E3800BF91A3 /* Build configuration list for PBXNativeTarget "Stee's First GameTests" */;
+			buildPhases = (
+				9A099E14176F7E3800BF91A3 /* Sources */,
+				9A099E15176F7E3800BF91A3 /* Frameworks */,
+				9A099E16176F7E3800BF91A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9A099E1E176F7E3800BF91A3 /* PBXTargetDependency */,
+			);
+			name = "Stee's First GameTests";
+			productName = "Stee's First GameTests";
+			productReference = 9A099E18176F7E3800BF91A3 /* Stee's First GameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9A099DE8176F7E3700BF91A3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = STW;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Stephen Wilson";
+				TargetAttributes = {
+					9A099E17176F7E3800BF91A3 = {
+						TestTargetID = 9A099DEF176F7E3700BF91A3;
+					};
+				};
+			};
+			buildConfigurationList = 9A099DEB176F7E3700BF91A3 /* Build configuration list for PBXProject "Stee's First Game" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9A099DE7176F7E3700BF91A3;
+			productRefGroup = 9A099DF1176F7E3700BF91A3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9A099DEF176F7E3700BF91A3 /* Stee's First Game */,
+				9A099E17176F7E3800BF91A3 /* Stee's First GameTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9A099DEE176F7E3700BF91A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A099E00176F7E3700BF91A3 /* InfoPlist.strings in Resources */,
+				9A099E13176F7E3800BF91A3 /* Images.xcassets in Resources */,
+				9A099E11176F7E3700BF91A3 /* Spaceship.png in Resources */,
+				9A099E09176F7E3700BF91A3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A099E16176F7E3800BF91A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A099E24176F7E3800BF91A3 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9A099DEC176F7E3700BF91A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A099E02176F7E3700BF91A3 /* main.m in Sources */,
+				9A099E0F176F7E3700BF91A3 /* STWMyScene.m in Sources */,
+				9A099E0C176F7E3700BF91A3 /* STWViewController.m in Sources */,
+				9A099E06176F7E3700BF91A3 /* STWAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A099E14176F7E3800BF91A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A099E26176F7E3800BF91A3 /* Stee_s_First_GameTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9A099E1E176F7E3800BF91A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A099DEF176F7E3700BF91A3 /* Stee's First Game */;
+			targetProxy = 9A099E1D176F7E3800BF91A3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9A099DFE176F7E3700BF91A3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A099DFF176F7E3700BF91A3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9A099E07176F7E3700BF91A3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A099E08176F7E3700BF91A3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9A099E22176F7E3800BF91A3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A099E23176F7E3800BF91A3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9A099E27176F7E3800BF91A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9A099E28176F7E3800BF91A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9A099E2A176F7E3800BF91A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Stee's First Game/Stee's First Game-Prefix.pch";
+				INFOPLIST_FILE = "Stee's First Game/Stee's First Game-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9A099E2B176F7E3800BF91A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Stee's First Game/Stee's First Game-Prefix.pch";
+				INFOPLIST_FILE = "Stee's First Game/Stee's First Game-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9A099E2D176F7E3800BF91A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Stee's First Game.app/Stee's First Game";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Stee's First Game/Stee's First Game-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Stee's First GameTests/Stee's First GameTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		9A099E2E176F7E3800BF91A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Stee's First Game.app/Stee's First Game";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Stee's First Game/Stee's First Game-Prefix.pch";
+				INFOPLIST_FILE = "Stee's First GameTests/Stee's First GameTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9A099DEB176F7E3700BF91A3 /* Build configuration list for PBXProject "Stee's First Game" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A099E27176F7E3800BF91A3 /* Debug */,
+				9A099E28176F7E3800BF91A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A099E29176F7E3800BF91A3 /* Build configuration list for PBXNativeTarget "Stee's First Game" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A099E2A176F7E3800BF91A3 /* Debug */,
+				9A099E2B176F7E3800BF91A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9A099E2C176F7E3800BF91A3 /* Build configuration list for PBXNativeTarget "Stee's First GameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A099E2D176F7E3800BF91A3 /* Debug */,
+				9A099E2E176F7E3800BF91A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9A099DE8176F7E3700BF91A3 /* Project object */;
+}
