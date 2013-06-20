@@ -24,6 +24,13 @@
 		9A099E1C176F7E3800BF91A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A099DF7176F7E3700BF91A3 /* UIKit.framework */; };
 		9A099E24176F7E3800BF91A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A099E22176F7E3800BF91A3 /* InfoPlist.strings */; };
 		9A099E26176F7E3800BF91A3 /* Stee_s_First_GameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A099E25176F7E3800BF91A3 /* Stee_s_First_GameTests.m */; };
+		9A099E30176F81CA00BF91A3 /* Character_Boy.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A099E2F176F81CA00BF91A3 /* Character_Boy.png */; };
+		9A099E33176F87CA00BF91A3 /* STWMovementCalculations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A099E32176F87CA00BF91A3 /* STWMovementCalculations.m */; };
+		9A099E35176FA58D00BF91A3 /* WindowTall_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A099E34176FA58D00BF91A3 /* WindowTall_small.png */; };
+		9A099E37176FAE3D00BF91A3 /* WindowTall.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A099E36176FAE3D00BF91A3 /* WindowTall.png */; };
+		9ABC656F1770DC550033D12B /* Ladders.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ABC656E1770DC550033D12B /* Ladders.png */; };
+		9ACFA5EA17723962002075D2 /* Elephant.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ACFA5E917723962002075D2 /* Elephant.png */; };
+		9ACFA5ED1772456C002075D2 /* STWSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACFA5EC177240C4002075D2 /* STWSpriteNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +67,15 @@
 		9A099E21176F7E3800BF91A3 /* Stee's First GameTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Stee's First GameTests-Info.plist"; sourceTree = "<group>"; };
 		9A099E23176F7E3800BF91A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A099E25176F7E3800BF91A3 /* Stee_s_First_GameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Stee_s_First_GameTests.m; sourceTree = "<group>"; };
+		9A099E2F176F81CA00BF91A3 /* Character_Boy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Character_Boy.png; sourceTree = "<group>"; };
+		9A099E31176F87CA00BF91A3 /* STWMovementCalculations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWMovementCalculations.h; sourceTree = "<group>"; };
+		9A099E32176F87CA00BF91A3 /* STWMovementCalculations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWMovementCalculations.m; sourceTree = "<group>"; };
+		9A099E34176FA58D00BF91A3 /* WindowTall_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WindowTall_small.png; sourceTree = "<group>"; };
+		9A099E36176FAE3D00BF91A3 /* WindowTall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WindowTall.png; sourceTree = "<group>"; };
+		9ABC656E1770DC550033D12B /* Ladders.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ladders.png; sourceTree = "<group>"; };
+		9ACFA5E917723962002075D2 /* Elephant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Elephant.png; sourceTree = "<group>"; };
+		9ACFA5EB177240C4002075D2 /* STWSpriteNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STWSpriteNode.h; sourceTree = "<group>"; };
+		9ACFA5EC177240C4002075D2 /* STWSpriteNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STWSpriteNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,9 +142,18 @@
 				9A099E07176F7E3700BF91A3 /* Main.storyboard */,
 				9A099E0A176F7E3700BF91A3 /* STWViewController.h */,
 				9A099E0B176F7E3700BF91A3 /* STWViewController.m */,
+				9A099E31176F87CA00BF91A3 /* STWMovementCalculations.h */,
+				9A099E32176F87CA00BF91A3 /* STWMovementCalculations.m */,
 				9A099E0D176F7E3700BF91A3 /* STWMyScene.h */,
 				9A099E0E176F7E3700BF91A3 /* STWMyScene.m */,
+				9ACFA5EB177240C4002075D2 /* STWSpriteNode.h */,
+				9ACFA5EC177240C4002075D2 /* STWSpriteNode.m */,
 				9A099E10176F7E3700BF91A3 /* Spaceship.png */,
+				9A099E2F176F81CA00BF91A3 /* Character_Boy.png */,
+				9A099E34176FA58D00BF91A3 /* WindowTall_small.png */,
+				9A099E36176FAE3D00BF91A3 /* WindowTall.png */,
+				9ABC656E1770DC550033D12B /* Ladders.png */,
+				9ACFA5E917723962002075D2 /* Elephant.png */,
 				9A099E12176F7E3800BF91A3 /* Images.xcassets */,
 				9A099DFC176F7E3700BF91A3 /* Supporting Files */,
 			);
@@ -241,8 +266,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A099E37176FAE3D00BF91A3 /* WindowTall.png in Resources */,
 				9A099E00176F7E3700BF91A3 /* InfoPlist.strings in Resources */,
+				9ACFA5EA17723962002075D2 /* Elephant.png in Resources */,
 				9A099E13176F7E3800BF91A3 /* Images.xcassets in Resources */,
+				9A099E30176F81CA00BF91A3 /* Character_Boy.png in Resources */,
+				9A099E35176FA58D00BF91A3 /* WindowTall_small.png in Resources */,
+				9ABC656F1770DC550033D12B /* Ladders.png in Resources */,
 				9A099E11176F7E3700BF91A3 /* Spaceship.png in Resources */,
 				9A099E09176F7E3700BF91A3 /* Main.storyboard in Resources */,
 			);
@@ -266,6 +296,8 @@
 				9A099E02176F7E3700BF91A3 /* main.m in Sources */,
 				9A099E0F176F7E3700BF91A3 /* STWMyScene.m in Sources */,
 				9A099E0C176F7E3700BF91A3 /* STWViewController.m in Sources */,
+				9ACFA5ED1772456C002075D2 /* STWSpriteNode.m in Sources */,
+				9A099E33176F87CA00BF91A3 /* STWMovementCalculations.m in Sources */,
 				9A099E06176F7E3700BF91A3 /* STWAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,6 +503,7 @@
 				9A099E2B176F7E3800BF91A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9A099E2C176F7E3800BF91A3 /* Build configuration list for PBXNativeTarget "Stee's First GameTests" */ = {
 			isa = XCConfigurationList;
@@ -479,6 +512,7 @@
 				9A099E2E176F7E3800BF91A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

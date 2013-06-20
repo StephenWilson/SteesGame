@@ -8,6 +8,19 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+
+@protocol STWSceneDelegate;
+
+
 @interface STWMyScene : SKScene
+
+@property (nonatomic, assign) id<STWSceneDelegate> delegate;
+
+@end
+
+
+@protocol STWSceneDelegate <NSObject>
+
+- (void) scene:(STWMyScene *)scene didPositionMainCharacter:(CGPoint)position duration:(NSTimeInterval)duration;
 
 @end
