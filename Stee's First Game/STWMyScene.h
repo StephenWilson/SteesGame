@@ -21,6 +21,4 @@
 
 @protocol STWSceneDelegate <NSObject>
 
-- (void) scene:(STWMyScene *)scene didPositionMainCharacter:(CGPoint)position duration:(NSTimeInterval)duration;
-
 @end

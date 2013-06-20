@@ -52,7 +52,7 @@
         node.position = CGPointMake(offsetX*delta*childNumber,
 									offsetY*delta*childNumber);
         childNumber++;
-		NSLog(@"Paralllax Node: %@", NSStringFromCGPoint(node.position));
+		//NSLog(@"Paralllax Node: %@", NSStringFromCGPoint(node.position));
 		
     }
 }

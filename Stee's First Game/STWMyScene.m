@@ -30,10 +30,19 @@
 @property (nonatomic, retain) SKSpriteNode *ladder;
 @property (nonatomic, retain) SKSpriteNode *ladder2;
 @property (nonatomic, retain) SKSpriteNode *ladder3;
+@property (nonatomic, retain) SKNode *world;
 @property (nonatomic, retain) SKNode *backgroundNode;
 @property (nonatomic, retain) SKNode *foregroundNode;
 @property (nonatomic, retain) STWSpriteNode *parallaxContainer;
+@property (nonatomic) BOOL worldMovedForUpdate;
 
+
+@end
+
+
+@interface STWMyScene (Actions)
+
+- (void) moveCameraTo:(CGPoint)point duration:(NSTimeInterval)duration;
 
 @end
 
@@ -49,6 +58,8 @@
 		self.anchorPoint = CGPointMake(0, 0.);
 		
 		// Setup the world
+		self.world = [SKNode node];
+		[self addChild:self.world];
 		
 		self.backgroundNode = [SKNode node];
 		self.foregroundNode = [SKNode node];
@@ -68,7 +79,7 @@
 		[self.foregroundNode addChild:self.elephantCharacter];
 		
 		self.parallaxContainer = [[STWSpriteNode alloc] initWithSprites:@[self.backgroundNode, self.foregroundNode] usingOffset:25.];
-		[self addChild:self.parallaxContainer];
+		[self.world addChild:self.parallaxContainer];
     }
     return self;
 }
@@ -133,7 +144,7 @@
 	CGFloat duration = distance / 400;
 	
 	self.currentCharacter = character;
-	[self.delegate scene:self didPositionMainCharacter:self.currentCharacter.position duration:duration];
+	[self moveCameraTo:self.currentCharacter.position duration:duration];
 }
 
 @end
@@ -151,8 +162,22 @@
 	SKAction *boyWalkAction = [SKAction moveTo:pointB duration:duration];
 	[character removeActionForKey:@"CharacterWalk"];
 	[character runAction:boyWalkAction withKey:@"CharacterWalk"];
+}
+
+
+- (void) moveCameraTo:(CGPoint)point duration:(NSTimeInterval)duration
+{
+	CGFloat x = -point.x;
 	
-	[self.delegate scene:self didPositionMainCharacter:pointB duration:duration];
+	if (-x < (self.view.frame.size.width/2.0)) {
+		x = -(self.view.frame.size.width/2.0);
+	}
+	else if (-x > self.frame.size.width - (self.view.frame.size.width / 2.0)) {
+		x = -(self.frame.size.width - (self.view.frame.size.width / 2.0));
+	}
+	
+	SKAction *moveWorld = [SKAction moveTo:CGPointMake(x + (self.frame.size.width / 2.0), self.world.position.y) duration:duration];
+	[self.world runAction:moveWorld withKey:@"MoveCamera"];
 }
 
 @end
@@ -221,7 +246,7 @@
     
     if ([touches count] == 1) {
 		UITouch *aTouch = [touches anyObject];
-		CGPoint aTouchPosition = [aTouch locationInNode:self];
+		CGPoint aTouchPosition = [aTouch locationInNode:self.world];
 		
 		if (self.currentCharacter != self.elephantCharacter &&
 			CGRectContainsPoint(self.elephantCharacter.frame, aTouchPosition)) {
@@ -315,6 +340,22 @@
 
 - (void)didSimulatePhysics {
     [super didSimulatePhysics];
+	
+	if (self.currentCharacter && ![self.world actionForKey:@"MoveCamera"]) {
+        CGFloat x = -self.currentCharacter.position.x;
+		
+		if (-x < (self.view.frame.size.width/2.0)) {
+			x = -(self.view.frame.size.width/2.0);
+		}
+		else if (-x > self.frame.size.width - (self.view.frame.size.width / 2.0)) {
+			x = -(self.frame.size.width - (self.view.frame.size.width / 2.0));
+		}
+
+		self.world.position = CGPointMake(x + (self.frame.size.width / 2.0), self.world.position.y);
+    }
+	
+	// Perform clearWorldMove after subclasses execute didSimulatePhysics
+    //[self performSelector:@selector(clearWorldMoved)                  withObject:nil afterDelay:0.0f];
 	
 	[self.parallaxContainer updateOffset];
 }
