@@ -28,6 +28,12 @@
 		9A099E33176F87CA00BF91A3 /* STWMovementCalculations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A099E32176F87CA00BF91A3 /* STWMovementCalculations.m */; };
 		9A099E35176FA58D00BF91A3 /* WindowTall_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A099E34176FA58D00BF91A3 /* WindowTall_small.png */; };
 		9A099E37176FAE3D00BF91A3 /* WindowTall.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A099E36176FAE3D00BF91A3 /* WindowTall.png */; };
+		9A1F1C881773C99500E47D73 /* box_wooden.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A1F1C871773C99500E47D73 /* box_wooden.png */; };
+		9A1F1C8B1773C9EE00E47D73 /* STWBoxNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F1C8A1773C9EE00E47D73 /* STWBoxNode.m */; };
+		9A1F1C901773D5E600E47D73 /* BoxDestruct.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9A1F1C8E1773D5E600E47D73 /* BoxDestruct.sks */; };
+		9A1F1C911773D5E600E47D73 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A1F1C8F1773D5E600E47D73 /* spark.png */; };
+		9A408ECE17749C2200440561 /* STWBarrelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A408ECD17749C2200440561 /* STWBarrelNode.m */; };
+		9A408ED31774A2BC00440561 /* barrel_flammable.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A408ED21774A2BC00440561 /* barrel_flammable.png */; };
 		9ABC656F1770DC550033D12B /* Ladders.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ABC656E1770DC550033D12B /* Ladders.png */; };
 		9ACFA5EA17723962002075D2 /* Elephant.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ACFA5E917723962002075D2 /* Elephant.png */; };
 		9ACFA5ED1772456C002075D2 /* STWSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACFA5EC177240C4002075D2 /* STWSpriteNode.m */; };
@@ -72,6 +78,15 @@
 		9A099E32176F87CA00BF91A3 /* STWMovementCalculations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWMovementCalculations.m; sourceTree = "<group>"; };
 		9A099E34176FA58D00BF91A3 /* WindowTall_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WindowTall_small.png; sourceTree = "<group>"; };
 		9A099E36176FAE3D00BF91A3 /* WindowTall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WindowTall.png; sourceTree = "<group>"; };
+		9A1F1C871773C99500E47D73 /* box_wooden.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_wooden.png; sourceTree = "<group>"; };
+		9A1F1C891773C9EE00E47D73 /* STWBoxNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWBoxNode.h; sourceTree = "<group>"; };
+		9A1F1C8A1773C9EE00E47D73 /* STWBoxNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWBoxNode.m; sourceTree = "<group>"; };
+		9A1F1C8E1773D5E600E47D73 /* BoxDestruct.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BoxDestruct.sks; sourceTree = "<group>"; };
+		9A1F1C8F1773D5E600E47D73 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		9A408ECC17749C2200440561 /* STWBarrelNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWBarrelNode.h; sourceTree = "<group>"; };
+		9A408ECD17749C2200440561 /* STWBarrelNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWBarrelNode.m; sourceTree = "<group>"; };
+		9A408ECF17749E1400440561 /* STWBoxNode+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "STWBoxNode+Private.h"; sourceTree = "<group>"; };
+		9A408ED21774A2BC00440561 /* barrel_flammable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barrel_flammable.png; sourceTree = "<group>"; };
 		9ABC656E1770DC550033D12B /* Ladders.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ladders.png; sourceTree = "<group>"; };
 		9ACFA5E917723962002075D2 /* Elephant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Elephant.png; sourceTree = "<group>"; };
 		9ACFA5EB177240C4002075D2 /* STWSpriteNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STWSpriteNode.h; sourceTree = "<group>"; };
@@ -148,12 +163,21 @@
 				9A099E0E176F7E3700BF91A3 /* STWMyScene.m */,
 				9ACFA5EB177240C4002075D2 /* STWSpriteNode.h */,
 				9ACFA5EC177240C4002075D2 /* STWSpriteNode.m */,
+				9A1F1C891773C9EE00E47D73 /* STWBoxNode.h */,
+				9A1F1C8A1773C9EE00E47D73 /* STWBoxNode.m */,
+				9A408ECF17749E1400440561 /* STWBoxNode+Private.h */,
+				9A408ECC17749C2200440561 /* STWBarrelNode.h */,
+				9A408ECD17749C2200440561 /* STWBarrelNode.m */,
+				9A1F1C8E1773D5E600E47D73 /* BoxDestruct.sks */,
+				9A1F1C8F1773D5E600E47D73 /* spark.png */,
 				9A099E10176F7E3700BF91A3 /* Spaceship.png */,
 				9A099E2F176F81CA00BF91A3 /* Character_Boy.png */,
 				9A099E34176FA58D00BF91A3 /* WindowTall_small.png */,
 				9A099E36176FAE3D00BF91A3 /* WindowTall.png */,
 				9ABC656E1770DC550033D12B /* Ladders.png */,
 				9ACFA5E917723962002075D2 /* Elephant.png */,
+				9A1F1C871773C99500E47D73 /* box_wooden.png */,
+				9A408ED21774A2BC00440561 /* barrel_flammable.png */,
 				9A099E12176F7E3800BF91A3 /* Images.xcassets */,
 				9A099DFC176F7E3700BF91A3 /* Supporting Files */,
 			);
@@ -269,11 +293,15 @@
 				9A099E37176FAE3D00BF91A3 /* WindowTall.png in Resources */,
 				9A099E00176F7E3700BF91A3 /* InfoPlist.strings in Resources */,
 				9ACFA5EA17723962002075D2 /* Elephant.png in Resources */,
+				9A1F1C881773C99500E47D73 /* box_wooden.png in Resources */,
+				9A1F1C911773D5E600E47D73 /* spark.png in Resources */,
+				9A1F1C901773D5E600E47D73 /* BoxDestruct.sks in Resources */,
 				9A099E13176F7E3800BF91A3 /* Images.xcassets in Resources */,
 				9A099E30176F81CA00BF91A3 /* Character_Boy.png in Resources */,
 				9A099E35176FA58D00BF91A3 /* WindowTall_small.png in Resources */,
 				9ABC656F1770DC550033D12B /* Ladders.png in Resources */,
 				9A099E11176F7E3700BF91A3 /* Spaceship.png in Resources */,
+				9A408ED31774A2BC00440561 /* barrel_flammable.png in Resources */,
 				9A099E09176F7E3700BF91A3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,9 +323,11 @@
 			files = (
 				9A099E02176F7E3700BF91A3 /* main.m in Sources */,
 				9A099E0F176F7E3700BF91A3 /* STWMyScene.m in Sources */,
+				9A1F1C8B1773C9EE00E47D73 /* STWBoxNode.m in Sources */,
 				9A099E0C176F7E3700BF91A3 /* STWViewController.m in Sources */,
 				9ACFA5ED1772456C002075D2 /* STWSpriteNode.m in Sources */,
 				9A099E33176F87CA00BF91A3 /* STWMovementCalculations.m in Sources */,
+				9A408ECE17749C2200440561 /* STWBarrelNode.m in Sources */,
 				9A099E06176F7E3700BF91A3 /* STWAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

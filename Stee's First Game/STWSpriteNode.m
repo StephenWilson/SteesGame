@@ -45,6 +45,8 @@
     CGPoint scenePos = [scene convertPoint:self.position fromNode:parent];
     CGFloat offsetX =  (-1.0f + (2.0 * (scenePos.x / scene.size.width)));
     CGFloat offsetY =  (-1.0f + (2.0 * (scenePos.y / scene.size.height)));
+	//NSLog(@"X: %f", offsetX);
+	//NSLog(@"Y: %f", offsetY);
     CGFloat delta = self.parallaxOffset / (CGFloat)self.children.count;
 	
     int childNumber = 0;
@@ -55,6 +57,7 @@
 		//NSLog(@"Paralllax Node: %@", NSStringFromCGPoint(node.position));
 		
     }
+	//NSLog(@" ");
 }
 
 

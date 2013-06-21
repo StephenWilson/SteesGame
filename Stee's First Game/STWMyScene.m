@@ -9,7 +9,8 @@
 #import "STWMyScene.h"
 #import "STWMovementCalculations.h"
 #import "STWSpriteNode.h"
-
+#import "STWBoxNode.h"
+#import "STWBarrelNode.h"
 
 
 #define LADDER_SIZE					66
@@ -35,6 +36,7 @@
 @property (nonatomic, retain) SKNode *foregroundNode;
 @property (nonatomic, retain) STWSpriteNode *parallaxContainer;
 @property (nonatomic) BOOL worldMovedForUpdate;
+@property (nonatomic, retain) NSMutableArray *boxes;
 
 
 @end
@@ -63,7 +65,6 @@
 		
 		self.backgroundNode = [SKNode node];
 		self.foregroundNode = [SKNode node];
-		//[self addChild:self.backgroundNode];
 		
 		[self.foregroundNode addChild:self.groundNode];
 		[self.backgroundNode addChild:self.window1];
@@ -73,6 +74,15 @@
 		[self.backgroundNode addChild:self.ladder];
 		[self.backgroundNode addChild:self.ladder2];
 		[self.backgroundNode addChild:self.ladder3];
+		STWBoxNode *boxNode = [STWBoxNode node];
+		STWBarrelNode *barrelNode = [STWBarrelNode node];
+		self.boxes = [NSMutableArray array];
+		[self.boxes addObject:boxNode];
+		[self.boxes addObject:barrelNode];
+		boxNode.position = CGPointMake(self.boyCharacter.position.x + 100., self.boyCharacter.position.y);
+		barrelNode.position = CGPointMake(self.boyCharacter.position.x + 200., self.boyCharacter.position.y);
+		[self.foregroundNode addChild:boxNode];
+		[self.foregroundNode addChild:barrelNode];
 		
 		[self.foregroundNode addChild:self.boyCharacter];
 		self.currentCharacter = self.boyCharacter;
@@ -92,7 +102,6 @@
 			CGRectIntersectsRect(rect, self.ladder3.frame));
 }
 
-
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
 	if ([self rectIntersectsLadder:self.currentCharacter.frame]) {
@@ -100,6 +109,17 @@
 	}
 	else {
 		self.currentCharacter.physicsBody.affectedByGravity = YES;
+	}
+	
+	for (STWBoxNode *aBoxNode in self.boxes) {
+		CGRect smashCollisionFrame = CGRectMake(self.currentCharacter.frame.origin.x - 2.,
+												self.currentCharacter.frame.origin.y - 2.,
+												self.currentCharacter.frame.size.width + 2.,
+												self.currentCharacter.frame.size.height + 2.);
+		if (CGRectIntersectsRect(smashCollisionFrame, aBoxNode.frame)) {
+			[aBoxNode destruct];
+		}
+		
 	}
 }
 
