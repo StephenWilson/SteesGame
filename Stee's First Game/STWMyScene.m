@@ -11,9 +11,11 @@
 #import "STWSpriteNode.h"
 #import "STWBoxNode.h"
 #import "STWBarrelNode.h"
+#import "STWPictureFrameNode.h"
 
 
 #define LADDER_SIZE					66
+#define CHARACTER_FACES_SIDE_KEY	@"STWCharacterFacesSideKey"
 
 
 
@@ -84,6 +86,10 @@
 		[self.backgroundNode addChild:self.ladder];
 		[self.backgroundNode addChild:self.ladder2];
 		[self.backgroundNode addChild:self.ladder3];
+		
+		STWPictureFrameNode *scaFellPictureFrame = [STWPictureFrameNode pictureFrameNodeWithImage:[UIImage imageNamed:@"Picture_sca_fell"]];
+		scaFellPictureFrame.position = CGPointMake(300, 300);
+		[self.backgroundNode addChild:scaFellPictureFrame];
 		
 		[self addBoxAtPosition:CGPointMake(self.boyCharacter.position.x + 100., self.boyCharacter.position.y)];
 		
@@ -163,6 +169,9 @@
 		elephantPhysicsBody.allowsRotation = NO;
 		_elephantCharacter.physicsBody = elephantPhysicsBody;
 		
+		if (!_elephantCharacter.userData) _elephantCharacter.userData = [NSMutableDictionary dictionary];
+		[_elephantCharacter.userData setObject:[NSNumber numberWithBool:YES] forKey:CHARACTER_FACES_SIDE_KEY];
+		
 	}
 	return _elephantCharacter;
 }
@@ -193,6 +202,16 @@
 	
 	SKAction *boyWalkAction = [SKAction moveTo:pointB duration:duration];
 	if (![character actionForKey:@"CharacterWalk"]) {
+		
+		// Face the character to the direction they are going if neccassary
+		BOOL facingWrongDirection = (pointB.x < character.position.x && character.size.width > 0) ||
+								(pointB.x > character.position.x && character.size.width < 0);
+		BOOL characterFacesSide = [[character.userData objectForKey:CHARACTER_FACES_SIDE_KEY] boolValue];
+		if (facingWrongDirection && characterFacesSide) {
+			SKAction *turnAroundAction = [SKAction resizeByWidth:-2*character.size.width height:0 duration:0.0];
+			[character runAction:turnAroundAction];
+		}
+		
 		[character runAction:boyWalkAction withKey:@"CharacterWalk"];
 	}
 }
