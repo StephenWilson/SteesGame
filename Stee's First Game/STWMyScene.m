@@ -37,6 +37,7 @@
 @property (nonatomic, retain) STWSpriteNode *parallaxContainer;
 @property (nonatomic) BOOL worldMovedForUpdate;
 @property (nonatomic, retain) NSMutableArray *boxes;
+@property (nonatomic, retain) UITouch *currentTouch;
 
 
 @end
@@ -44,7 +45,16 @@
 
 @interface STWMyScene (Actions)
 
+- (void) walkCharacter:(SKSpriteNode *)character To:(CGPoint)pointB;
 - (void) moveCameraTo:(CGPoint)point duration:(NSTimeInterval)duration;
+
+@end
+
+
+@interface STWMyScene (Objects)
+
+- (void) addBoxAtPosition:(CGPoint)position;
+- (void) addBarrelAtPosition:(CGPoint)position;
 
 @end
 
@@ -74,15 +84,12 @@
 		[self.backgroundNode addChild:self.ladder];
 		[self.backgroundNode addChild:self.ladder2];
 		[self.backgroundNode addChild:self.ladder3];
-		STWBoxNode *boxNode = [STWBoxNode node];
-		STWBarrelNode *barrelNode = [STWBarrelNode node];
-		self.boxes = [NSMutableArray array];
-		[self.boxes addObject:boxNode];
-		[self.boxes addObject:barrelNode];
-		boxNode.position = CGPointMake(self.boyCharacter.position.x + 100., self.boyCharacter.position.y);
-		barrelNode.position = CGPointMake(self.boyCharacter.position.x + 200., self.boyCharacter.position.y);
-		[self.foregroundNode addChild:boxNode];
-		[self.foregroundNode addChild:barrelNode];
+		
+		[self addBoxAtPosition:CGPointMake(self.boyCharacter.position.x + 100., self.boyCharacter.position.y)];
+		
+		[self addBarrelAtPosition:CGPointMake(self.boyCharacter.position.x + 200., self.boyCharacter.position.y)];
+		[self addBarrelAtPosition:CGPointMake(self.boyCharacter.position.x + 260., self.boyCharacter.position.y)];
+		[self addBarrelAtPosition:CGPointMake(self.boyCharacter.position.x + 320., self.boyCharacter.position.y)];
 		
 		[self.foregroundNode addChild:self.boyCharacter];
 		self.currentCharacter = self.boyCharacter;
@@ -121,6 +128,11 @@
 		}
 		
 	}
+	
+	if (self.currentTouch) {
+		CGPoint aTouchPosition = [self.currentTouch locationInNode:self.world];
+		[self walkCharacter:self.currentCharacter To:aTouchPosition];
+	}
 }
 
 @end
@@ -133,7 +145,7 @@
         _boyCharacter = [SKSpriteNode spriteNodeWithImageNamed:@"Character_Boy"];
         _boyCharacter.position = CGPointMake(100, 120.);
 		
-		SKPhysicsBody *boyPhysicsBody = [SKPhysicsBody bodyWithCircleOfRadius:45.];
+		SKPhysicsBody *boyPhysicsBody = [SKPhysicsBody bodyWithCircleOfRadius:40];
 		boyPhysicsBody.allowsRotation = NO;
 		_boyCharacter.physicsBody = boyPhysicsBody;
 		_boyCharacter.physicsBody.affectedByGravity = NO;
@@ -180,8 +192,9 @@
 	if (duration <= 0) return;
 	
 	SKAction *boyWalkAction = [SKAction moveTo:pointB duration:duration];
-	[character removeActionForKey:@"CharacterWalk"];
-	[character runAction:boyWalkAction withKey:@"CharacterWalk"];
+	if (![character actionForKey:@"CharacterWalk"]) {
+		[character runAction:boyWalkAction withKey:@"CharacterWalk"];
+	}
 }
 
 
@@ -202,7 +215,7 @@
 
 @end
 
-@implementation STWMyScene (Ladder)
+@implementation STWMyScene (Objects)
 
 - (SKSpriteNode *) ladder
 {
@@ -236,36 +249,40 @@
 	return _ladder3;
 }
 
+
+
+- (void) addBoxAtPosition:(CGPoint)position
+{
+	STWBoxNode *boxNode = [STWBoxNode node];
+	boxNode.position = position;
+	if (!self.boxes) {
+		self.boxes = [NSMutableArray array];
+	}
+	[self.boxes addObject:boxNode];
+	[self.foregroundNode addChild:boxNode];
+}
+
+
+- (void) addBarrelAtPosition:(CGPoint)position
+{
+	STWBarrelNode *barrelNode = [STWBarrelNode node];
+	barrelNode.position = position;
+	if (!self.boxes) {
+		self.boxes = [NSMutableArray array];
+	}
+	[self.boxes addObject:barrelNode];
+	[self.foregroundNode addChild:barrelNode];
+}
+
 @end
 
 @implementation STWMyScene (UserInteraction)
 
-//-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//    
-//    if ([touches count] == 1) {
-//		UITouch *aTouch = [touches anyObject];
-//		CGPoint aTouchPosition = [aTouch locationInNode:self];
-//		
-//		[self walkBoyTo:aTouchPosition];
-//    }
-//}
-//
-//
-//-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-//    
-//    if ([touches count] == 1) {
-//		UITouch *aTouch = [touches anyObject];
-//		CGPoint aTouchPosition = [aTouch locationInNode:self];
-//		
-//		[self walkBoyTo:aTouchPosition];
-//    }
-//}
-
-
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     if ([touches count] == 1) {
 		UITouch *aTouch = [touches anyObject];
+		self.currentTouch = aTouch;
 		CGPoint aTouchPosition = [aTouch locationInNode:self.world];
 		
 		if (self.currentCharacter != self.elephantCharacter &&
@@ -273,13 +290,28 @@
 			[self switchTo:self.elephantCharacter];
 		}
 		else if (self.currentCharacter != self.boyCharacter &&
-			CGRectContainsPoint(self.boyCharacter.frame, aTouchPosition)) {
+				 CGRectContainsPoint(self.boyCharacter.frame, aTouchPosition)) {
 			[self switchTo:self.boyCharacter];
 		}
 		else {
-			[self walkCharacter:self.currentCharacter To:aTouchPosition];
+			//[self walkCharacter:self.currentCharacter To:aTouchPosition];
 		}
     }
+}
+
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    if ([touches count] == 1) {
+		UITouch *aTouch = [touches anyObject];
+		self.currentTouch = aTouch;
+	}
+}
+
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    self.currentTouch = nil;
 }
 
 @end
