@@ -10,5 +10,6 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface STWViewController : UIViewController
+- (IBAction)reset:(id)sender;
 
 @end

@@ -57,4 +57,16 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (IBAction)reset:(id)sender {
+	
+	SKView * skView = (SKView *)self.view;
+	
+	// Create and configure the scene.
+    STWMyScene * scene = [STWMyScene sceneWithSize:CGSizeMake(self.view.bounds.size.width*2., self.view.bounds.size.height)];
+    scene.scaleMode = SKSceneScaleModeAspectFill;
+    scene.delegate = (id<STWSceneDelegate>)self;
+	
+    // Present the scene.
+    [skView presentScene:scene];
+}
 @end
