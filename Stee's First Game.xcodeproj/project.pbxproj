@@ -32,6 +32,7 @@
 		9A1F1C8B1773C9EE00E47D73 /* STWBoxNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F1C8A1773C9EE00E47D73 /* STWBoxNode.m */; };
 		9A1F1C901773D5E600E47D73 /* BoxDestruct.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9A1F1C8E1773D5E600E47D73 /* BoxDestruct.sks */; };
 		9A1F1C911773D5E600E47D73 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A1F1C8F1773D5E600E47D73 /* spark.png */; };
+		9A20D9F61777246500372998 /* Picture_ennerdale.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A20D9F51777246500372998 /* Picture_ennerdale.png */; };
 		9A408ECE17749C2200440561 /* STWBarrelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A408ECD17749C2200440561 /* STWBarrelNode.m */; };
 		9A408ED31774A2BC00440561 /* barrel_flammable.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A408ED21774A2BC00440561 /* barrel_flammable.png */; };
 		9AAEA7DE1777145F00D5FB60 /* picture_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AAEA7DD1777145F00D5FB60 /* picture_frame.png */; };
@@ -86,6 +87,7 @@
 		9A1F1C8A1773C9EE00E47D73 /* STWBoxNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWBoxNode.m; sourceTree = "<group>"; };
 		9A1F1C8E1773D5E600E47D73 /* BoxDestruct.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BoxDestruct.sks; sourceTree = "<group>"; };
 		9A1F1C8F1773D5E600E47D73 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		9A20D9F51777246500372998 /* Picture_ennerdale.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Picture_ennerdale.png; sourceTree = "<group>"; };
 		9A408ECC17749C2200440561 /* STWBarrelNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWBarrelNode.h; sourceTree = "<group>"; };
 		9A408ECD17749C2200440561 /* STWBarrelNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWBarrelNode.m; sourceTree = "<group>"; };
 		9A408ECF17749E1400440561 /* STWBoxNode+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "STWBoxNode+Private.h"; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				9A408ED21774A2BC00440561 /* barrel_flammable.png */,
 				9AAEA7DD1777145F00D5FB60 /* picture_frame.png */,
 				9AAEA7E417771C7500D5FB60 /* Picture_sca_fell.png */,
+				9A20D9F51777246500372998 /* Picture_ennerdale.png */,
 				9A099E12176F7E3800BF91A3 /* Images.xcassets */,
 				9A099DFC176F7E3700BF91A3 /* Supporting Files */,
 			);
@@ -314,6 +317,7 @@
 				9AAEA7E517771C7500D5FB60 /* Picture_sca_fell.png in Resources */,
 				9ABC656F1770DC550033D12B /* Ladders.png in Resources */,
 				9A099E11176F7E3700BF91A3 /* Spaceship.png in Resources */,
+				9A20D9F61777246500372998 /* Picture_ennerdale.png in Resources */,
 				9A408ED31774A2BC00440561 /* barrel_flammable.png in Resources */,
 				9A099E09176F7E3700BF91A3 /* Main.storyboard in Resources */,
 			);

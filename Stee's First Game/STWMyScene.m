@@ -57,6 +57,7 @@
 
 - (void) addBoxAtPosition:(CGPoint)position;
 - (void) addBarrelAtPosition:(CGPoint)position;
+- (void) addPictureFrame:(NSString *)imageName atPosition:(CGPoint)position;
 
 @end
 
@@ -72,39 +73,44 @@
 		self.anchorPoint = CGPointMake(0, 0.);
 		
 		// Setup the world
-		self.world = [SKNode node];
-		[self addChild:self.world];
-		
-		self.backgroundNode = [SKNode node];
-		self.foregroundNode = [SKNode node];
-		
-		[self.foregroundNode addChild:self.groundNode];
-		[self.backgroundNode addChild:self.window1];
-		[self.backgroundNode addChild:self.window2];
-		[self.backgroundNode addChild:self.window3];
-		[self.foregroundNode addChild:self.firstFloor];
-		[self.backgroundNode addChild:self.ladder];
-		[self.backgroundNode addChild:self.ladder2];
-		[self.backgroundNode addChild:self.ladder3];
-		
-		STWPictureFrameNode *scaFellPictureFrame = [STWPictureFrameNode pictureFrameNodeWithImage:[UIImage imageNamed:@"Picture_sca_fell"]];
-		scaFellPictureFrame.position = CGPointMake(300, 300);
-		[self.backgroundNode addChild:scaFellPictureFrame];
-		
-		[self addBoxAtPosition:CGPointMake(self.boyCharacter.position.x + 100., self.boyCharacter.position.y)];
-		
-		[self addBarrelAtPosition:CGPointMake(self.boyCharacter.position.x + 200., self.boyCharacter.position.y)];
-		[self addBarrelAtPosition:CGPointMake(self.boyCharacter.position.x + 260., self.boyCharacter.position.y)];
-		[self addBarrelAtPosition:CGPointMake(self.boyCharacter.position.x + 320., self.boyCharacter.position.y)];
-		
-		[self.foregroundNode addChild:self.boyCharacter];
-		self.currentCharacter = self.boyCharacter;
-		[self.foregroundNode addChild:self.elephantCharacter];
-		
-		self.parallaxContainer = [[STWSpriteNode alloc] initWithSprites:@[self.backgroundNode, self.foregroundNode] usingOffset:25.];
-		[self.world addChild:self.parallaxContainer];
+		[self setupWorld];
     }
     return self;
+}
+
+
+- (void) setupWorld
+{
+	self.world = [SKNode node];
+	[self addChild:self.world];
+	
+	self.backgroundNode = [SKNode node];
+	self.foregroundNode = [SKNode node];
+	
+	[self.foregroundNode addChild:self.groundNode];
+	[self.backgroundNode addChild:self.window1];
+	[self.backgroundNode addChild:self.window2];
+	[self.backgroundNode addChild:self.window3];
+	[self.foregroundNode addChild:self.firstFloor];
+	[self.backgroundNode addChild:self.ladder];
+	[self.backgroundNode addChild:self.ladder2];
+	[self.backgroundNode addChild:self.ladder3];
+	
+	[self addPictureFrame:@"Picture_sca_fell" atPosition:CGPointMake(300, 320)];
+	[self addPictureFrame:@"Picture_ennerdale" atPosition:CGPointMake(300, 120)];
+	
+	[self addBoxAtPosition:CGPointMake(self.boyCharacter.position.x + 100., self.boyCharacter.position.y)];
+	
+	[self addBarrelAtPosition:CGPointMake(self.boyCharacter.position.x + 200., self.boyCharacter.position.y)];
+	[self addBarrelAtPosition:CGPointMake(self.boyCharacter.position.x + 260., self.boyCharacter.position.y)];
+	[self addBarrelAtPosition:CGPointMake(self.boyCharacter.position.x + 320., self.boyCharacter.position.y)];
+	
+	[self.foregroundNode addChild:self.boyCharacter];
+	self.currentCharacter = self.boyCharacter;
+	[self.foregroundNode addChild:self.elephantCharacter];
+	
+	self.parallaxContainer = [[STWSpriteNode alloc] initWithSprites:@[self.backgroundNode, self.foregroundNode] usingOffset:25.];
+	[self.world addChild:self.parallaxContainer];
 }
 
 
@@ -293,6 +299,14 @@
 	[self.foregroundNode addChild:barrelNode];
 }
 
+
+- (void) addPictureFrame:(NSString *)imageName atPosition:(CGPoint)position
+{
+	STWPictureFrameNode *pictureFrame = [STWPictureFrameNode pictureFrameNodeWithImage:[UIImage imageNamed:imageName]];
+	pictureFrame.position = position;
+	[self.backgroundNode addChild:pictureFrame];
+}
+
 @end
 
 @implementation STWMyScene (UserInteraction)
@@ -305,7 +319,7 @@
 		CGPoint aTouchPosition = [aTouch locationInNode:self.world];
 		
 		if (self.currentCharacter != self.elephantCharacter &&
-			CGRectContainsPoint(self.elephantCharacter.frame, aTouchPosition)) {
+				CGRectContainsPoint(self.elephantCharacter.frame, aTouchPosition)) {
 			[self switchTo:self.elephantCharacter];
 		}
 		else if (self.currentCharacter != self.boyCharacter &&
@@ -363,7 +377,7 @@
 	if (!_firstFloor) {
 		_firstFloor = [SKShapeNode node];
 		CGFloat firstFloorWidth = 530;
-		_firstFloor.position = CGPointMake((firstFloorWidth/2), 180.);
+		_firstFloor.position = CGPointMake((firstFloorWidth/2), 230.);
 		_firstFloor.fillColor = [UIColor brownColor];
 		_firstFloor.strokeColor = [UIColor darkGrayColor];
 		_firstFloor.path = CGPathCreateWithRect(CGRectMake(-(firstFloorWidth/2), -15, firstFloorWidth, 30), NULL);
@@ -390,7 +404,7 @@
 {
 	if (!_window2) {
 		_window2 = [SKSpriteNode spriteNodeWithImageNamed:@"WindowTall"];
-		_window2.position = CGPointMake(60., 320.);
+		_window2.position = CGPointMake(60., 360.);
 	}
 	return _window2;
 }
@@ -400,7 +414,7 @@
 {
 	if (!_window3) {
 		_window3 = [SKSpriteNode spriteNodeWithImageNamed:@"WindowTall"];
-		_window3.position = CGPointMake(self.frame.size.width - 60, 320.);
+		_window3.position = CGPointMake(self.frame.size.width - 60, 360.);
 	}
 	return _window3;
 }
