@@ -8,6 +8,8 @@
 
 #import "STWViewController.h"
 #import "STWMyScene.h"
+#import "STWFirstScene.h"
+#import "STWSecondScene.h"
 
 
 @interface STWViewController ()
@@ -28,7 +30,7 @@
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
     // Create and configure the scene.
-    STWMyScene * scene = [STWMyScene sceneWithSize:CGSizeMake(self.view.bounds.size.width*2., self.view.bounds.size.height)];
+    STWFirstScene * scene = [STWFirstScene sceneWithSize:CGSizeMake(self.view.bounds.size.width*2., self.view.bounds.size.height)];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     scene.delegate = (id<STWSceneDelegate>)self;
 	
@@ -62,7 +64,7 @@
 	SKView * skView = (SKView *)self.view;
 	
 	// Create and configure the scene.
-    STWMyScene * scene = [STWMyScene sceneWithSize:CGSizeMake(self.view.bounds.size.width*2., self.view.bounds.size.height)];
+    STWSecondScene * scene = [STWSecondScene sceneWithSize:CGSizeMake(self.view.bounds.size.width*2., self.view.bounds.size.height)];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     scene.delegate = (id<STWSceneDelegate>)self;
 	

@@ -12,32 +12,26 @@
 #import "STWBoxNode.h"
 #import "STWBarrelNode.h"
 #import "STWPictureFrameNode.h"
+#import "STWMyScene_Private.h"
 
 
-#define LADDER_SIZE					66
 #define CHARACTER_FACES_SIDE_KEY	@"STWCharacterFacesSideKey"
-
 
 
 @interface STWMyScene ()
 
 
-@property (nonatomic, retain) SKSpriteNode *currentCharacter;
-@property (nonatomic, retain) SKSpriteNode *boyCharacter;
-@property (nonatomic, retain) SKSpriteNode *elephantCharacter;
+//@property (nonatomic, retain) SKSpriteNode *currentCharacter;
+//@property (nonatomic, retain) SKSpriteNode *boyCharacter;
+//@property (nonatomic, retain) SKSpriteNode *elephantCharacter;
 @property (nonatomic, retain) SKShapeNode *groundNode;
 @property (nonatomic, retain) SKShapeNode *firstFloor;
 @property (nonatomic, retain) SKShapeNode *leftWall;
 @property (nonatomic, retain) SKShapeNode *rightWall;
-@property (nonatomic, retain) SKSpriteNode *window1;
-@property (nonatomic, retain) SKSpriteNode *window2;
-@property (nonatomic, retain) SKSpriteNode *window3;
-@property (nonatomic, retain) SKSpriteNode *ladder;
-@property (nonatomic, retain) SKSpriteNode *ladder2;
-@property (nonatomic, retain) SKSpriteNode *ladder3;
-@property (nonatomic, retain) SKNode *world;
-@property (nonatomic, retain) SKNode *backgroundNode;
-@property (nonatomic, retain) SKNode *foregroundNode;
+@property (nonatomic, retain) NSMutableArray *ladders;
+//@property (nonatomic, retain) SKNode *world;
+//@property (nonatomic, retain) SKNode *backgroundNode;
+//@property (nonatomic, retain) SKNode *foregroundNode;
 @property (nonatomic, retain) STWSpriteNode *parallaxContainer;
 @property (nonatomic) BOOL worldMovedForUpdate;
 @property (nonatomic, retain) NSMutableArray *boxes;
@@ -55,13 +49,13 @@
 @end
 
 
-@interface STWMyScene (Objects)
-
-- (void) addBoxAtPosition:(CGPoint)position;
-- (void) addBarrelAtPosition:(CGPoint)position;
-- (void) addPictureFrame:(NSString *)imageName atPosition:(CGPoint)position;
-
-@end
+//@interface STWMyScene (Objects)
+//
+//- (void) addBoxAtPosition:(CGPoint)position;
+//- (void) addBarrelAtPosition:(CGPoint)position;
+//- (void) addPictureFrame:(NSString *)imageName atPosition:(CGPoint)position;
+//
+//@end
 
 
 @implementation STWMyScene
@@ -92,25 +86,6 @@
 	[self.foregroundNode addChild:self.firstFloor];
 	[self.foregroundNode addChild:self.leftWall];
 	[self.foregroundNode addChild:self.rightWall];
-	[self.backgroundNode addChild:self.window1];
-	[self.backgroundNode addChild:self.window2];
-	[self.backgroundNode addChild:self.window3];
-	[self.backgroundNode addChild:self.ladder];
-	[self.backgroundNode addChild:self.ladder2];
-	[self.backgroundNode addChild:self.ladder3];
-	
-	[self addPictureFrame:@"Picture_sca_fell" atPosition:CGPointMake(300, 320)];
-	[self addPictureFrame:@"Picture_ennerdale" atPosition:CGPointMake(300, 120)];
-	
-	[self addBoxAtPosition:CGPointMake(self.boyCharacter.position.x + 100., self.boyCharacter.position.y)];
-	
-	[self addBarrelAtPosition:CGPointMake(self.boyCharacter.position.x + 200., self.boyCharacter.position.y)];
-	[self addBarrelAtPosition:CGPointMake(self.boyCharacter.position.x + 260., self.boyCharacter.position.y)];
-	[self addBarrelAtPosition:CGPointMake(self.boyCharacter.position.x + 320., self.boyCharacter.position.y)];
-	
-	[self.foregroundNode addChild:self.boyCharacter];
-	self.currentCharacter = self.boyCharacter;
-	[self.foregroundNode addChild:self.elephantCharacter];
 	
 	self.parallaxContainer = [[STWSpriteNode alloc] initWithSprites:@[self.backgroundNode, self.foregroundNode] usingOffset:25.];
 	[self.world addChild:self.parallaxContainer];
@@ -119,9 +94,12 @@
 
 - (BOOL) rectIntersectsLadder:(CGRect)rect
 {
-	return (CGRectIntersectsRect(rect, self.ladder.frame) |
-			CGRectIntersectsRect(rect, self.ladder2.frame) |
-			CGRectIntersectsRect(rect, self.ladder3.frame));
+	for (SKNode *ladder in self.ladders) {
+		if (CGRectIntersectsRect(rect, ladder.calculateAccumulatedFrame)) {
+			return YES;
+		}
+	}
+	return NO;
 }
 
 -(void)update:(CFTimeInterval)currentTime {
@@ -245,38 +223,6 @@
 
 @implementation STWMyScene (Objects)
 
-- (SKSpriteNode *) ladder
-{
-	if (!_ladder) {
-		_ladder = [SKSpriteNode spriteNodeWithImageNamed:@"Ladders"];
-		_ladder.position = CGPointMake(self.frame.size.width - 90, 30+(LADDER_SIZE/2.0));
-		_ladder.size = CGSizeMake(LADDER_SIZE, LADDER_SIZE);
-	}
-	return _ladder;
-}
-
-
-- (SKSpriteNode *) ladder2
-{
-	if (!_ladder2) {
-		_ladder2 = [SKSpriteNode spriteNodeWithImageNamed:@"Ladders"];
-		_ladder2.position = CGPointMake(self.ladder.position.x, self.ladder.position.y+LADDER_SIZE);
-		_ladder2.size = CGSizeMake(LADDER_SIZE, LADDER_SIZE);
-	}
-	return _ladder2;
-}
-
-
-- (SKSpriteNode *) ladder3
-{
-	if (!_ladder3) {
-		_ladder3 = [SKSpriteNode spriteNodeWithImageNamed:@"Ladders"];
-		_ladder3.position = CGPointMake(self.ladder.position.x, self.ladder2.position.y+LADDER_SIZE);
-		_ladder3.size = CGSizeMake(LADDER_SIZE, LADDER_SIZE);
-	}
-	return _ladder3;
-}
-
 
 
 - (void) addBoxAtPosition:(CGPoint)position
@@ -308,6 +254,42 @@
 	STWPictureFrameNode *pictureFrame = [STWPictureFrameNode pictureFrameNodeWithImage:[UIImage imageNamed:imageName]];
 	pictureFrame.position = position;
 	[self.backgroundNode addChild:pictureFrame];
+}
+
+
+- (void) addWindowAtPosition:(CGPoint)position
+{
+	SKSpriteNode *window = [SKSpriteNode spriteNodeWithImageNamed:@"WindowTall"];
+	window.position = position;
+	
+	[self.backgroundNode addChild:window];
+}
+
+
+- (void) addLadderInRect:(CGRect)worldRect
+{
+	NSInteger ladderParts = floor(worldRect.size.height / LADDER_SIZE);
+	SKNode *ladderNode = [SKNode node];
+	ladderNode.position = CGPointMake(CGRectGetMidX(worldRect),
+									  CGRectGetMidY(worldRect));
+	
+	CGFloat yOffset = worldRect.size.height - (ladderParts * LADDER_SIZE) - (worldRect.size.height / 2.);
+	
+	for (int i=0; i<3; i++) {
+		SKSpriteNode *ladderPart = [SKSpriteNode spriteNodeWithImageNamed:@"Ladders"];
+		ladderPart.position = CGPointMake(0., yOffset);
+		ladderPart.size = CGSizeMake(LADDER_SIZE, LADDER_SIZE);
+		yOffset += LADDER_SIZE;
+		
+		[ladderNode addChild:ladderPart];
+	}
+	
+	[self.backgroundNode addChild:ladderNode];
+	
+	if (!self.ladders) {
+		self.ladders = [NSMutableArray array];
+	}
+	[self.ladders addObject:ladderNode];
 }
 
 @end
@@ -432,37 +414,6 @@
 		_rightWall.physicsBody.affectedByGravity = NO;
 	}
 	return _rightWall;
-}
-
-
-
-- (SKSpriteNode *) window1
-{
-	if (!_window1) {
-		_window1 = [SKSpriteNode spriteNodeWithImageNamed:@"WindowTall"];
-		_window1.position = CGPointMake(90., 120.);
-	}
-	return _window1;
-}
-
-
-- (SKSpriteNode *) window2
-{
-	if (!_window2) {
-		_window2 = [SKSpriteNode spriteNodeWithImageNamed:@"WindowTall"];
-		_window2.position = CGPointMake(90., 360.);
-	}
-	return _window2;
-}
-
-
-- (SKSpriteNode *) window3
-{
-	if (!_window3) {
-		_window3 = [SKSpriteNode spriteNodeWithImageNamed:@"WindowTall"];
-		_window3.position = CGPointMake(self.frame.size.width - 90, 360.);
-	}
-	return _window3;
 }
 
 @end

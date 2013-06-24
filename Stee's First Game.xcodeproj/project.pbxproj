@@ -28,6 +28,8 @@
 		9A1F1C901773D5E600E47D73 /* BoxDestruct.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9A1F1C8E1773D5E600E47D73 /* BoxDestruct.sks */; };
 		9A1F1C911773D5E600E47D73 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A1F1C8F1773D5E600E47D73 /* spark.png */; };
 		9A408ECE17749C2200440561 /* STWBarrelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A408ECD17749C2200440561 /* STWBarrelNode.m */; };
+		9A6E83871778A116005A57B8 /* STWSecondScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E83861778A116005A57B8 /* STWSecondScene.m */; };
+		9A6E838A1778A14E005A57B8 /* STWFirstScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E83891778A14E005A57B8 /* STWFirstScene.m */; };
 		9AAEA7E1177714C100D5FB60 /* STWPictureFrameNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAEA7E0177714C100D5FB60 /* STWPictureFrameNode.m */; };
 		9ACFA5ED1772456C002075D2 /* STWSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACFA5EC177240C4002075D2 /* STWSpriteNode.m */; };
 /* End PBXBuildFile section */
@@ -74,6 +76,11 @@
 		9A408ECC17749C2200440561 /* STWBarrelNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWBarrelNode.h; sourceTree = "<group>"; };
 		9A408ECD17749C2200440561 /* STWBarrelNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWBarrelNode.m; sourceTree = "<group>"; };
 		9A408ECF17749E1400440561 /* STWBoxNode+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "STWBoxNode+Private.h"; sourceTree = "<group>"; };
+		9A6E83851778A116005A57B8 /* STWSecondScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWSecondScene.h; sourceTree = "<group>"; };
+		9A6E83861778A116005A57B8 /* STWSecondScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWSecondScene.m; sourceTree = "<group>"; };
+		9A6E83881778A14E005A57B8 /* STWFirstScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWFirstScene.h; sourceTree = "<group>"; };
+		9A6E83891778A14E005A57B8 /* STWFirstScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWFirstScene.m; sourceTree = "<group>"; };
+		9A6E838B1778A1B9005A57B8 /* STWMyScene_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWMyScene_Private.h; sourceTree = "<group>"; };
 		9AAEA7DF177714C100D5FB60 /* STWPictureFrameNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWPictureFrameNode.h; sourceTree = "<group>"; };
 		9AAEA7E0177714C100D5FB60 /* STWPictureFrameNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWPictureFrameNode.m; sourceTree = "<group>"; };
 		9ACFA5EB177240C4002075D2 /* STWSpriteNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STWSpriteNode.h; sourceTree = "<group>"; };
@@ -148,6 +155,11 @@
 				9A099E32176F87CA00BF91A3 /* STWMovementCalculations.m */,
 				9A099E0D176F7E3700BF91A3 /* STWMyScene.h */,
 				9A099E0E176F7E3700BF91A3 /* STWMyScene.m */,
+				9A6E838B1778A1B9005A57B8 /* STWMyScene_Private.h */,
+				9A6E83881778A14E005A57B8 /* STWFirstScene.h */,
+				9A6E83891778A14E005A57B8 /* STWFirstScene.m */,
+				9A6E83851778A116005A57B8 /* STWSecondScene.h */,
+				9A6E83861778A116005A57B8 /* STWSecondScene.m */,
 				9ACFA5EB177240C4002075D2 /* STWSpriteNode.h */,
 				9ACFA5EC177240C4002075D2 /* STWSpriteNode.m */,
 				9A1F1C891773C9EE00E47D73 /* STWBoxNode.h */,
@@ -297,12 +309,14 @@
 				9A099E02176F7E3700BF91A3 /* main.m in Sources */,
 				9A099E0F176F7E3700BF91A3 /* STWMyScene.m in Sources */,
 				9A1F1C8B1773C9EE00E47D73 /* STWBoxNode.m in Sources */,
+				9A6E838A1778A14E005A57B8 /* STWFirstScene.m in Sources */,
 				9AAEA7E1177714C100D5FB60 /* STWPictureFrameNode.m in Sources */,
 				9A099E0C176F7E3700BF91A3 /* STWViewController.m in Sources */,
 				9ACFA5ED1772456C002075D2 /* STWSpriteNode.m in Sources */,
 				9A099E33176F87CA00BF91A3 /* STWMovementCalculations.m in Sources */,
 				9A408ECE17749C2200440561 /* STWBarrelNode.m in Sources */,
 				9A099E06176F7E3700BF91A3 /* STWAppDelegate.m in Sources */,
+				9A6E83871778A116005A57B8 /* STWSecondScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
