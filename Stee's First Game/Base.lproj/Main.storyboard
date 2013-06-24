@@ -36,6 +36,17 @@
             </objects>
         </scene>
     </scenes>
+    <classes>
+        <class className="SKView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SKView.h"/>
+        </class>
+        <class className="STWViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/STWViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="reset:"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

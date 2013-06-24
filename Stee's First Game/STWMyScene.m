@@ -21,17 +21,11 @@
 @interface STWMyScene ()
 
 
-//@property (nonatomic, retain) SKSpriteNode *currentCharacter;
-//@property (nonatomic, retain) SKSpriteNode *boyCharacter;
-//@property (nonatomic, retain) SKSpriteNode *elephantCharacter;
 @property (nonatomic, retain) SKShapeNode *groundNode;
 @property (nonatomic, retain) SKShapeNode *firstFloor;
 @property (nonatomic, retain) SKShapeNode *leftWall;
 @property (nonatomic, retain) SKShapeNode *rightWall;
 @property (nonatomic, retain) NSMutableArray *ladders;
-//@property (nonatomic, retain) SKNode *world;
-//@property (nonatomic, retain) SKNode *backgroundNode;
-//@property (nonatomic, retain) SKNode *foregroundNode;
 @property (nonatomic, retain) STWSpriteNode *parallaxContainer;
 @property (nonatomic) BOOL worldMovedForUpdate;
 @property (nonatomic, retain) NSMutableArray *boxes;
@@ -48,15 +42,12 @@
 
 @end
 
+@interface STWMyScene (Positioning)
 
-//@interface STWMyScene (Objects)
-//
-//- (void) addBoxAtPosition:(CGPoint)position;
-//- (void) addBarrelAtPosition:(CGPoint)position;
-//- (void) addPictureFrame:(NSString *)imageName atPosition:(CGPoint)position;
-//
-//@end
+- (CGPoint) worldPositionForCamera:(CGPoint)position;
+- (void) centreOnPosition:(CGPoint)position;
 
+@end
 
 @implementation STWMyScene
 
@@ -104,13 +95,6 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-	if ([self rectIntersectsLadder:self.currentCharacter.frame]) {
-		self.currentCharacter.physicsBody.affectedByGravity = NO;
-	}
-	else {
-		self.currentCharacter.physicsBody.affectedByGravity = YES;
-	}
-	
 	for (STWBoxNode *aBoxNode in self.boxes) {
 		CGRect smashCollisionFrame = CGRectMake(self.currentCharacter.frame.origin.x - 2.,
 												self.currentCharacter.frame.origin.y - 2.,
@@ -206,16 +190,10 @@
 
 - (void) moveCameraTo:(CGPoint)point duration:(NSTimeInterval)duration
 {
-	CGFloat x = -point.x;
-	
-	if (-x < (self.view.frame.size.width/2.0)) {
-		x = -(self.view.frame.size.width/2.0);
-	}
-	else if (-x > self.frame.size.width - (self.view.frame.size.width / 2.0)) {
-		x = -(self.frame.size.width - (self.view.frame.size.width / 2.0));
-	}
-	
-	SKAction *moveWorld = [SKAction moveTo:CGPointMake(x + (self.frame.size.width / 2.0), self.world.position.y) duration:duration];
+	CGPoint aPoint = [self worldPositionForCamera:point];
+	CGPoint thePoint = CGPointMake(-aPoint.x + CGRectGetMidX(self.frame),
+								   -aPoint.y + CGRectGetMidY(self.frame));
+	SKAction *moveWorld = [SKAction moveTo:thePoint duration:duration];
 	[self.world runAction:moveWorld withKey:@"MoveCamera"];
 }
 
@@ -418,46 +396,62 @@
 
 @end
 
-@implementation STWMyScene (Parallax)
+@implementation STWMyScene (Positioning)
+
+
+- (CGPoint) worldPositionForCamera:(CGPoint)position
+{
+	CGFloat x = -position.x;
+	CGFloat y = -position.y;
+	
+	CGSize viewableSize = CGSizeMake([self convertPointFromView:CGPointMake(CGRectGetMaxX(self.view.bounds), 0.)].x - [self convertPointFromView:CGPointZero].x,
+									 [self convertPointFromView:CGPointZero].y - [self convertPointFromView:CGPointMake(0, CGRectGetMaxY(self.view.bounds))].y);
+	
+	if (-x < (viewableSize.width/2.0)) {
+		x = -(viewableSize.width/2.0);
+	}
+	else if (-x > self.frame.size.width - (viewableSize.width / 2.0)) {
+		x = -(self.frame.size.width - (viewableSize.width / 2.0));
+	}
+	
+	if (-y < (viewableSize.height/2.0)) {
+		y = -(viewableSize.height/2.0);
+	}
+	else if (-y > self.frame.size.height - (viewableSize.height / 2.0)) {
+		y = -(self.frame.size.height - (viewableSize.height / 2.0));
+	}
+	
+	return CGPointMake(-x, -y);
+}
+
+
+
+- (void) centreOnPosition:(CGPoint)position
+{
+	self.world.position = CGPointMake(-position.x + CGRectGetMidX(self.frame),
+									  -position.y + CGRectGetMidY(self.frame));
+}
+
 
 - (void)didSimulatePhysics {
     [super didSimulatePhysics];
 	
+	if ([self rectIntersectsLadder:self.currentCharacter.frame]) {
+		self.currentCharacter.physicsBody.affectedByGravity = NO;
+	}
+	else {
+		self.currentCharacter.physicsBody.affectedByGravity = YES;
+	}
+	
 	if (self.currentCharacter && ![self.world actionForKey:@"MoveCamera"]) {
 		
-		CGPoint convertedPoint = [self convertPoint:self.currentCharacter.position fromNode:self.currentCharacter.parent];
-		convertedPoint = [self convertPoint:convertedPoint toNode:self.world];
-		
-        CGFloat x = -self.currentCharacter.position.x;
-		CGFloat y = -self.currentCharacter.position.y;
-		
-		CGSize viewableSize = CGSizeMake([self convertPointFromView:CGPointMake(CGRectGetMaxX(self.view.frame), 0.)].x - [self convertPointFromView:CGPointZero].x,
-										 [self convertPointFromView:CGPointZero].y - [self convertPointFromView:CGPointMake(0, CGRectGetMaxY(self.view.frame))].y);
-		
-		if (-x < (viewableSize.width/2.0)) {
-			x = -(viewableSize.width/2.0);
-		}
-		else if (-x > self.frame.size.width - (viewableSize.width / 2.0)) {
-			x = -(self.frame.size.width - (viewableSize.width / 2.0));
-		}
-		
-		if (-y < (viewableSize.height/2.0)) {
-			y = -(viewableSize.height/2.0);
-		}
-		else if (-y > self.frame.size.height - (viewableSize.height / 2.0)) {
-			y = -(self.frame.size.height - (viewableSize.height / 2.0));
-		}
-
-		self.world.position = CGPointMake(x + CGRectGetMidX(self.frame),
-										  y + CGRectGetMidY(self.frame));
+		[self centreOnPosition:[self worldPositionForCamera:self.currentCharacter.position]];
     }
 	
 	// Perform clearWorldMove after subclasses execute didSimulatePhysics
     //[self performSelector:@selector(clearWorldMoved)                  withObject:nil afterDelay:0.0f];
 	
 	[self.parallaxContainer updateOffset];
-	
-	
 }
 
 @end

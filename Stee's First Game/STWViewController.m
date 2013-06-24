@@ -30,7 +30,7 @@
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
     // Create and configure the scene.
-    STWFirstScene * scene = [STWFirstScene sceneWithSize:CGSizeMake(self.view.bounds.size.width*2., self.view.bounds.size.height)];
+    STWMyScene * scene = [STWFirstScene sceneWithSize:CGSizeMake(640., 480.)];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     scene.delegate = (id<STWSceneDelegate>)self;
 	
@@ -53,6 +53,7 @@
     }
 }
 
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -64,11 +65,18 @@
 	SKView * skView = (SKView *)self.view;
 	
 	// Create and configure the scene.
-    STWSecondScene * scene = [STWSecondScene sceneWithSize:CGSizeMake(self.view.bounds.size.width*2., self.view.bounds.size.height)];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
-    scene.delegate = (id<STWSceneDelegate>)self;
+	STWMyScene *scene = nil;
+	if ([skView.scene isKindOfClass:[STWFirstScene class]]) {
+		scene = [STWSecondScene sceneWithSize:CGSizeMake(640., 480.)];
+	}
+	else {
+		scene = [STWFirstScene sceneWithSize:CGSizeMake(640., 480.)];
+	}
+	
+	scene.scaleMode = SKSceneScaleModeAspectFill;
+	((STWMyScene *)scene).delegate = (id<STWSceneDelegate>)self;
 	
     // Present the scene.
-    [skView presentScene:scene];
+    [skView presentScene:scene transition:[SKTransition doorwayWithDuration:1.0]];
 }
 @end
