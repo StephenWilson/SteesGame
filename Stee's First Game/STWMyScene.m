@@ -26,10 +26,12 @@
 @property (nonatomic, retain) SKSpriteNode *boyCharacter;
 @property (nonatomic, retain) SKSpriteNode *elephantCharacter;
 @property (nonatomic, retain) SKShapeNode *groundNode;
+@property (nonatomic, retain) SKShapeNode *firstFloor;
+@property (nonatomic, retain) SKShapeNode *leftWall;
+@property (nonatomic, retain) SKShapeNode *rightWall;
 @property (nonatomic, retain) SKSpriteNode *window1;
 @property (nonatomic, retain) SKSpriteNode *window2;
 @property (nonatomic, retain) SKSpriteNode *window3;
-@property (nonatomic, retain) SKShapeNode *firstFloor;
 @property (nonatomic, retain) SKSpriteNode *ladder;
 @property (nonatomic, retain) SKSpriteNode *ladder2;
 @property (nonatomic, retain) SKSpriteNode *ladder3;
@@ -69,8 +71,7 @@
         /* Setup your scene here */
         
         self.backgroundColor = [SKColor colorWithRed:0.8 green:0.8 blue:0 alpha:1.0];
-        
-		self.anchorPoint = CGPointMake(0, 0.);
+        self.anchorPoint = CGPointMake(0, 0.);
 		
 		// Setup the world
 		[self setupWorld];
@@ -88,10 +89,12 @@
 	self.foregroundNode = [SKNode node];
 	
 	[self.foregroundNode addChild:self.groundNode];
+	[self.foregroundNode addChild:self.firstFloor];
+	[self.foregroundNode addChild:self.leftWall];
+	[self.foregroundNode addChild:self.rightWall];
 	[self.backgroundNode addChild:self.window1];
 	[self.backgroundNode addChild:self.window2];
 	[self.backgroundNode addChild:self.window3];
-	[self.foregroundNode addChild:self.firstFloor];
 	[self.backgroundNode addChild:self.ladder];
 	[self.backgroundNode addChild:self.ladder2];
 	[self.backgroundNode addChild:self.ladder3];
@@ -246,7 +249,7 @@
 {
 	if (!_ladder) {
 		_ladder = [SKSpriteNode spriteNodeWithImageNamed:@"Ladders"];
-		_ladder.position = CGPointMake(self.frame.size.width - 60, 30+(LADDER_SIZE/2.0));
+		_ladder.position = CGPointMake(self.frame.size.width - 90, 30+(LADDER_SIZE/2.0));
 		_ladder.size = CGSizeMake(LADDER_SIZE, LADDER_SIZE);
 	}
 	return _ladder;
@@ -326,9 +329,6 @@
 				 CGRectContainsPoint(self.boyCharacter.frame, aTouchPosition)) {
 			[self switchTo:self.boyCharacter];
 		}
-		else {
-			//[self walkCharacter:self.currentCharacter To:aTouchPosition];
-		}
     }
 }
 
@@ -355,7 +355,7 @@
 {
 	if (!_groundNode) {
 		_groundNode = [SKShapeNode node];
-		_groundNode.position = CGPointMake(CGRectGetMidX(self.frame), 15.);
+		_groundNode.position = CGPointMake(CGRectGetMidX(self.frame)+14, 15.);
 		_groundNode.fillColor = [UIColor brownColor];
 		_groundNode.strokeColor = [UIColor darkGrayColor];
 		_groundNode.path = CGPathCreateWithRect(CGRectMake(-CGRectGetMidX(self.frame),
@@ -363,7 +363,7 @@
 														   self.frame.size.width,
 														   30.), NULL);
 		_groundNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.frame.size.width,
-																					5.)];
+																					5)];
 		_groundNode.physicsBody.dynamic = NO;
 		_groundNode.physicsBody.affectedByGravity = NO;
 	}
@@ -376,7 +376,7 @@
 {
 	if (!_firstFloor) {
 		_firstFloor = [SKShapeNode node];
-		CGFloat firstFloorWidth = 530;
+		CGFloat firstFloorWidth = 500;
 		_firstFloor.position = CGPointMake((firstFloorWidth/2), 230.);
 		_firstFloor.fillColor = [UIColor brownColor];
 		_firstFloor.strokeColor = [UIColor darkGrayColor];
@@ -390,11 +390,57 @@
 
 
 
+- (SKShapeNode *) leftWall
+{
+	if (!_leftWall) {
+		_leftWall = [SKShapeNode node];
+		_leftWall.position = CGPointMake(15., CGRectGetMidY(self.frame)+12);
+		_leftWall.fillColor = [UIColor brownColor];
+		_leftWall.strokeColor = [UIColor darkGrayColor];
+		
+		CGFloat wallHeight = self.frame.size.height + (_leftWall.lineWidth * 2.0) + 1.;
+		_leftWall.path = CGPathCreateWithRect(CGRectMake(-15.,
+														 -wallHeight/2.0,
+														 30.,
+														 wallHeight), NULL);
+		_leftWall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(30,
+																				  wallHeight)];
+		_leftWall.physicsBody.dynamic = NO;
+		_leftWall.physicsBody.affectedByGravity = NO;
+	}
+	return _leftWall;
+}
+
+
+
+- (SKShapeNode *) rightWall
+{
+	if (!_rightWall) {
+		_rightWall = [SKShapeNode node];
+		_rightWall.position = CGPointMake(self.frame.size.width+5, CGRectGetMidY(self.frame)+12);
+		_rightWall.fillColor = [UIColor brownColor];
+		_rightWall.strokeColor = [UIColor darkGrayColor];
+		
+		CGFloat wallHeight = self.frame.size.height + (_rightWall.lineWidth * 2.0) + 1.;
+		_rightWall.path = CGPathCreateWithRect(CGRectMake(-15.,
+														 -wallHeight/2.0,
+														 30.,
+														 wallHeight), NULL);
+		_rightWall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(30,
+																				  wallHeight)];
+		_rightWall.physicsBody.dynamic = NO;
+		_rightWall.physicsBody.affectedByGravity = NO;
+	}
+	return _rightWall;
+}
+
+
+
 - (SKSpriteNode *) window1
 {
 	if (!_window1) {
 		_window1 = [SKSpriteNode spriteNodeWithImageNamed:@"WindowTall"];
-		_window1.position = CGPointMake(60., 120.);
+		_window1.position = CGPointMake(90., 120.);
 	}
 	return _window1;
 }
@@ -404,7 +450,7 @@
 {
 	if (!_window2) {
 		_window2 = [SKSpriteNode spriteNodeWithImageNamed:@"WindowTall"];
-		_window2.position = CGPointMake(60., 360.);
+		_window2.position = CGPointMake(90., 360.);
 	}
 	return _window2;
 }
@@ -414,7 +460,7 @@
 {
 	if (!_window3) {
 		_window3 = [SKSpriteNode spriteNodeWithImageNamed:@"WindowTall"];
-		_window3.position = CGPointMake(self.frame.size.width - 60, 360.);
+		_window3.position = CGPointMake(self.frame.size.width - 90, 360.);
 	}
 	return _window3;
 }
@@ -427,22 +473,40 @@
     [super didSimulatePhysics];
 	
 	if (self.currentCharacter && ![self.world actionForKey:@"MoveCamera"]) {
-        CGFloat x = -self.currentCharacter.position.x;
 		
-		if (-x < (self.view.frame.size.width/2.0)) {
-			x = -(self.view.frame.size.width/2.0);
+		CGPoint convertedPoint = [self convertPoint:self.currentCharacter.position fromNode:self.currentCharacter.parent];
+		convertedPoint = [self convertPoint:convertedPoint toNode:self.world];
+		
+        CGFloat x = -self.currentCharacter.position.x;
+		CGFloat y = -self.currentCharacter.position.y;
+		
+		CGSize viewableSize = CGSizeMake([self convertPointFromView:CGPointMake(CGRectGetMaxX(self.view.frame), 0.)].x - [self convertPointFromView:CGPointZero].x,
+										 [self convertPointFromView:CGPointZero].y - [self convertPointFromView:CGPointMake(0, CGRectGetMaxY(self.view.frame))].y);
+		
+		if (-x < (viewableSize.width/2.0)) {
+			x = -(viewableSize.width/2.0);
 		}
-		else if (-x > self.frame.size.width - (self.view.frame.size.width / 2.0)) {
-			x = -(self.frame.size.width - (self.view.frame.size.width / 2.0));
+		else if (-x > self.frame.size.width - (viewableSize.width / 2.0)) {
+			x = -(self.frame.size.width - (viewableSize.width / 2.0));
+		}
+		
+		if (-y < (viewableSize.height/2.0)) {
+			y = -(viewableSize.height/2.0);
+		}
+		else if (-y > self.frame.size.height - (viewableSize.height / 2.0)) {
+			y = -(self.frame.size.height - (viewableSize.height / 2.0));
 		}
 
-		self.world.position = CGPointMake(x + (self.frame.size.width / 2.0), self.world.position.y);
+		self.world.position = CGPointMake(x + CGRectGetMidX(self.frame),
+										  y + CGRectGetMidY(self.frame));
     }
 	
 	// Perform clearWorldMove after subclasses execute didSimulatePhysics
     //[self performSelector:@selector(clearWorldMoved)                  withObject:nil afterDelay:0.0f];
 	
 	[self.parallaxContainer updateOffset];
+	
+	
 }
 
 @end
