@@ -81,14 +81,11 @@
 	
 	if (target.x > 0) {
 		newGunY = newGunY * -1;
-		//angle = -angle;
 		self.gunNode.xScale = 1;
-		//self.gunNode.yScale = -1;
 	}
 	else {
 		newGunX = newGunX * -1;
 		self.gunNode.xScale = -1;
-		//self.gunNode.yScale = 1;
 	}
 	
 	if (target.x < GUN_AIM_RADIUS && target.x > -GUN_AIM_RADIUS &&
@@ -101,25 +98,6 @@
 	self.gunNode.zRotation = -angle;
 	
 }
-//if (target.x < GUN_AIM_RADIUS && target.x > -GUN_AIM_RADIUS) {
-//	newGunX = target.x;
-//}
-//else if (target.x > GUN_AIM_RADIUS) {
-//	newGunX = GUN_AIM_RADIUS;
-//}
-//else if (target.x < -GUN_AIM_RADIUS) {
-//	newGunX = -GUN_AIM_RADIUS;
-//}
-//
-//if (target.y < GUN_AIM_RADIUS && target.y > -GUN_AIM_RADIUS) {
-//	newGunY = target.y;
-//}
-//else if (target.y > GUN_AIM_RADIUS) {
-//	newGunY = GUN_AIM_RADIUS;
-//}
-//else if (target.y < -GUN_AIM_RADIUS) {
-//	newGunY = -GUN_AIM_RADIUS;
-//}
 
 - (SKSpriteNode *) gunNode
 {
