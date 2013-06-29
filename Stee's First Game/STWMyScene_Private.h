@@ -7,6 +7,8 @@
 //
 
 #import "STWMyScene.h"
+#import "STWBoyCharacter.h"
+#import "STWElephantCharacter.h"
 
 #define LADDER_SIZE					66
 
@@ -16,9 +18,9 @@
 @property (nonatomic, retain) SKNode *backgroundNode;
 @property (nonatomic, retain) SKNode *foregroundNode;
 
-@property (nonatomic, retain) SKSpriteNode *currentCharacter;
-@property (nonatomic, retain) SKSpriteNode *boyCharacter;
-@property (nonatomic, retain) SKSpriteNode *elephantCharacter;
+@property (nonatomic, retain) STWCharacter *currentCharacter;
+@property (nonatomic, retain) STWBoyCharacter *boyCharacter;
+@property (nonatomic, retain) STWElephantCharacter *elephantCharacter;
 
 
 - (void) setupWorld;

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A01057A177F28D1000B7FD8 /* STWBoyCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A010579177F28D1000B7FD8 /* STWBoyCharacter.m */; };
+		9A01057D177F2A63000B7FD8 /* STWCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A01057C177F2A63000B7FD8 /* STWCharacter.m */; };
+		9A010581177F321A000B7FD8 /* STWElephantCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A010580177F321A000B7FD8 /* STWElephantCharacter.m */; };
 		9A099DF4176F7E3700BF91A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A099DF3176F7E3700BF91A3 /* Foundation.framework */; };
 		9A099DF6176F7E3700BF91A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A099DF5176F7E3700BF91A3 /* CoreGraphics.framework */; };
 		9A099DF8176F7E3700BF91A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A099DF7176F7E3700BF91A3 /* UIKit.framework */; };
@@ -45,6 +48,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A010578177F28D1000B7FD8 /* STWBoyCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWBoyCharacter.h; sourceTree = "<group>"; };
+		9A010579177F28D1000B7FD8 /* STWBoyCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWBoyCharacter.m; sourceTree = "<group>"; };
+		9A01057B177F2A63000B7FD8 /* STWCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWCharacter.h; sourceTree = "<group>"; };
+		9A01057C177F2A63000B7FD8 /* STWCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWCharacter.m; sourceTree = "<group>"; };
+		9A01057E177F31AF000B7FD8 /* STWCharacter_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWCharacter_Private.h; sourceTree = "<group>"; };
+		9A01057F177F321A000B7FD8 /* STWElephantCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWElephantCharacter.h; sourceTree = "<group>"; };
+		9A010580177F321A000B7FD8 /* STWElephantCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWElephantCharacter.m; sourceTree = "<group>"; };
 		9A099DF0176F7E3700BF91A3 /* Stee's First Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stee's First Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A099DF3176F7E3700BF91A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9A099DF5176F7E3700BF91A3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -146,6 +156,7 @@
 		9A099DFB176F7E3700BF91A3 /* Stee's First Game */ = {
 			isa = PBXGroup;
 			children = (
+				9AA913A81779DE1C00A5EFDA /* iPad */,
 				9A099E04176F7E3700BF91A3 /* STWAppDelegate.h */,
 				9A099E05176F7E3700BF91A3 /* STWAppDelegate.m */,
 				9A099E07176F7E3700BF91A3 /* Main.storyboard */,
@@ -169,6 +180,13 @@
 				9A408ECD17749C2200440561 /* STWBarrelNode.m */,
 				9AAEA7DF177714C100D5FB60 /* STWPictureFrameNode.h */,
 				9AAEA7E0177714C100D5FB60 /* STWPictureFrameNode.m */,
+				9A01057B177F2A63000B7FD8 /* STWCharacter.h */,
+				9A01057C177F2A63000B7FD8 /* STWCharacter.m */,
+				9A01057E177F31AF000B7FD8 /* STWCharacter_Private.h */,
+				9A010578177F28D1000B7FD8 /* STWBoyCharacter.h */,
+				9A010579177F28D1000B7FD8 /* STWBoyCharacter.m */,
+				9A01057F177F321A000B7FD8 /* STWElephantCharacter.h */,
+				9A010580177F321A000B7FD8 /* STWElephantCharacter.m */,
 				9A1F1C8E1773D5E600E47D73 /* BoxDestruct.sks */,
 				9A1F1C8F1773D5E600E47D73 /* spark.png */,
 				9A099E12176F7E3800BF91A3 /* Images.xcassets */,
@@ -204,6 +222,13 @@
 				9A099E22176F7E3800BF91A3 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9AA913A81779DE1C00A5EFDA /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,14 +332,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A099E02176F7E3700BF91A3 /* main.m in Sources */,
+				9A01057A177F28D1000B7FD8 /* STWBoyCharacter.m in Sources */,
 				9A099E0F176F7E3700BF91A3 /* STWMyScene.m in Sources */,
 				9A1F1C8B1773C9EE00E47D73 /* STWBoxNode.m in Sources */,
 				9A6E838A1778A14E005A57B8 /* STWFirstScene.m in Sources */,
 				9AAEA7E1177714C100D5FB60 /* STWPictureFrameNode.m in Sources */,
 				9A099E0C176F7E3700BF91A3 /* STWViewController.m in Sources */,
+				9A010581177F321A000B7FD8 /* STWElephantCharacter.m in Sources */,
 				9ACFA5ED1772456C002075D2 /* STWSpriteNode.m in Sources */,
 				9A099E33176F87CA00BF91A3 /* STWMovementCalculations.m in Sources */,
 				9A408ECE17749C2200440561 /* STWBarrelNode.m in Sources */,
+				9A01057D177F2A63000B7FD8 /* STWCharacter.m in Sources */,
 				9A099E06176F7E3700BF91A3 /* STWAppDelegate.m in Sources */,
 				9A6E83871778A116005A57B8 /* STWSecondScene.m in Sources */,
 			);
@@ -442,8 +470,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stee's First Game/Stee's First Game-Prefix.pch";
 				INFOPLIST_FILE = "Stee's First Game/Stee's First Game-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -456,8 +486,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stee's First Game/Stee's First Game-Prefix.pch";
 				INFOPLIST_FILE = "Stee's First Game/Stee's First Game-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

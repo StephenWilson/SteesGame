@@ -12,4 +12,6 @@
 
 +(CGFloat) distanceBetweenPointA:(CGPoint)pointA pointB:(CGPoint)pointB;
 
++(CGFloat) angleBetweenPointA:(CGPoint)pointA pointB:(CGPoint)pointB;
+
 @end

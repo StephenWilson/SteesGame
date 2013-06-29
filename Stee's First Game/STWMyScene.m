@@ -15,9 +15,6 @@
 #import "STWMyScene_Private.h"
 
 
-#define CHARACTER_FACES_SIDE_KEY	@"STWCharacterFacesSideKey"
-
-
 @interface STWMyScene ()
 
 
@@ -37,7 +34,6 @@
 
 @interface STWMyScene (Actions)
 
-- (void) walkCharacter:(SKSpriteNode *)character To:(CGPoint)pointB;
 - (void) moveCameraTo:(CGPoint)point duration:(NSTimeInterval)duration;
 
 @end
@@ -108,24 +104,30 @@
 	
 	if (self.currentTouch) {
 		CGPoint aTouchPosition = [self.currentTouch locationInNode:self.world];
-		[self walkCharacter:self.currentCharacter To:aTouchPosition];
+		[self.currentCharacter actionOnPoint:aTouchPosition];
 	}
+}
+
+
+- (void) toggleWeapon
+{
+	if (self.currentCharacter != self.boyCharacter) {
+		// Elephants can't carry guns!
+		return;
+	}
+	
+	[self.boyCharacter toggleWeapon];
 }
 
 @end
 
 @implementation STWMyScene (Characters)
 
-- (SKSpriteNode *) boyCharacter
+- (STWBoyCharacter *) boyCharacter
 {
     if (!_boyCharacter) {
-        _boyCharacter = [SKSpriteNode spriteNodeWithImageNamed:@"Character_Boy"];
-        _boyCharacter.position = CGPointMake(100, 120.);
-		
-		SKPhysicsBody *boyPhysicsBody = [SKPhysicsBody bodyWithCircleOfRadius:40];
-		boyPhysicsBody.allowsRotation = NO;
-		_boyCharacter.physicsBody = boyPhysicsBody;
-		_boyCharacter.physicsBody.affectedByGravity = NO;
+        _boyCharacter = [STWBoyCharacter boyCharacter];
+		_boyCharacter.position = CGPointMake(100, 120.);
     }
     return _boyCharacter;
 }
@@ -134,21 +136,14 @@
 - (SKSpriteNode *) elephantCharacter
 {
 	if (!_elephantCharacter) {
-		_elephantCharacter = [SKSpriteNode spriteNodeWithImageNamed:@"Elephant"];
+		_elephantCharacter = [STWElephantCharacter elephantCharacter];
 		_elephantCharacter.position = CGPointMake(300., 500.);
-		SKPhysicsBody *elephantPhysicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(140., 102.)];
-		elephantPhysicsBody.allowsRotation = NO;
-		_elephantCharacter.physicsBody = elephantPhysicsBody;
-		
-		if (!_elephantCharacter.userData) _elephantCharacter.userData = [NSMutableDictionary dictionary];
-		[_elephantCharacter.userData setObject:[NSNumber numberWithBool:YES] forKey:CHARACTER_FACES_SIDE_KEY];
-		
 	}
 	return _elephantCharacter;
 }
 
 
-- (void) switchTo:(SKSpriteNode *)character
+- (void) switchTo:(STWCharacter *)character
 {
 	// Work out how long the walk should take by t = d/s
 	CGFloat distance = [STWMovementCalculations distanceBetweenPointA:self.currentCharacter.position
@@ -162,31 +157,6 @@
 @end
 
 @implementation STWMyScene (Actions)
-
-- (void) walkCharacter:(SKSpriteNode *)character To:(CGPoint)pointB
-{
-	// Work out how long the walk should take by t = d/s
-	CGFloat distance = [STWMovementCalculations distanceBetweenPointA:character.position
-															   pointB:pointB];
-	CGFloat duration = distance / 400;
-	if (duration <= 0) return;
-	
-	SKAction *boyWalkAction = [SKAction moveTo:pointB duration:duration];
-	if (![character actionForKey:@"CharacterWalk"]) {
-		
-		// Face the character to the direction they are going if neccassary
-		BOOL facingWrongDirection = (pointB.x < character.position.x && character.size.width > 0) ||
-								(pointB.x > character.position.x && character.size.width < 0);
-		BOOL characterFacesSide = [[character.userData objectForKey:CHARACTER_FACES_SIDE_KEY] boolValue];
-		if (facingWrongDirection && characterFacesSide) {
-			SKAction *turnAroundAction = [SKAction resizeByWidth:-2*character.size.width height:0 duration:0.0];
-			[character runAction:turnAroundAction];
-		}
-		
-		[character runAction:boyWalkAction withKey:@"CharacterWalk"];
-	}
-}
-
 
 - (void) moveCameraTo:(CGPoint)point duration:(NSTimeInterval)duration
 {

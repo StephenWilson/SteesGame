@@ -17,4 +17,13 @@
 }
 
 
++(CGFloat) angleBetweenPointA:(CGPoint)pointA pointB:(CGPoint)pointB
+{
+	CGFloat height = pointB.y - pointA.y;
+	CGFloat width = pointA.x - pointB.x;
+	CGFloat rads = atan(height/width);
+	return rads;
+}
+
+
 @end

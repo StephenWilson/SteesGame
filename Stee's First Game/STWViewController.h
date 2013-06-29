@@ -11,5 +11,6 @@
 
 @interface STWViewController : UIViewController
 - (IBAction)reset:(id)sender;
+- (IBAction)weaponise:(id)sender;
 
 @end

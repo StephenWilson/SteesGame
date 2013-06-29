@@ -16,6 +16,8 @@
 
 @property (nonatomic, assign) id<STWSceneDelegate> delegate;
 
+- (void) toggleWeapon;
+
 @end
 
 

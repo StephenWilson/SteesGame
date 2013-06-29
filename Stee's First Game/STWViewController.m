@@ -79,4 +79,12 @@
     // Present the scene.
     [skView presentScene:scene transition:[SKTransition doorwayWithDuration:1.0]];
 }
+
+- (IBAction)weaponise:(id)sender {
+	
+	SKView *skView = (SKView *)self.view;
+	STWMyScene *scene = (STWMyScene *)[skView scene];
+	
+	[scene toggleWeapon];
+}
 @end
