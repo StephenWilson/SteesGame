@@ -11,6 +11,7 @@
 #import "STWMovementCalculations.h"
 
 #define GUN_AIM_RADIUS				30
+#define BULLET_DIAMETER				5.
 
 @interface STWBoyCharacter ()
 
@@ -19,6 +20,7 @@
 @property (nonatomic) BOOL gunActive;
 
 - (void) aimGun:(CGPoint)target;
+- (void) firegun:(CGPoint)target;
 
 @end
 
@@ -44,6 +46,7 @@
 	// If the gun is active then shoot otherwise move
 	if (self.gunActive) {
 		[self aimGun:point];
+		[self firegun:point];
 	}
 	else {
 		[super actionOnPoint:point];
@@ -98,6 +101,25 @@
 	self.gunNode.zRotation = -angle;
 	
 }
+
+
+- (void) firegun:(CGPoint)target
+{
+	SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithColor:[UIColor purpleColor] size:CGSizeMake(BULLET_DIAMETER, BULLET_DIAMETER)];
+	bullet.position = [self.parent convertPoint:self.gunNode.position fromNode:self];
+	bullet.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:BULLET_DIAMETER];
+	bullet.physicsBody.mass = 0.000001;
+	[self.parent addChild:bullet];
+	
+	SKAction *fireAction = [SKAction moveTo:target duration:0.3];
+	[bullet runAction:fireAction];
+	
+	SKAction *bulletFade = [SKAction fadeAlphaTo:0.0 duration:0.6];
+	[bullet runAction:bulletFade completion:^(void){
+		[bullet removeFromParent];
+	}];
+}
+
 
 - (SKSpriteNode *) gunNode
 {
